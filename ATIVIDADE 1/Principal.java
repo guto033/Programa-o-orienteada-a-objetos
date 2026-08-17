@@ -37,26 +37,17 @@ public class Principal {
         filme1.marcarAssistido();
         filme2.avaliar(9.5);
 
+        Titular titular1 = new Titular("Augusto", "12345", null);
+        ContaBancária c1 = new ContaBancária(titular1, 500);
 
-        ContaBancária conta1 = new ContaBancária();
+        c1.DepositarValor(500.0);
+        c1.DepositarValor(-50.0);
+        c1.sacar(100.0);
+        c1.aplicarRendimento(10.0);
+        c1.aplicarRendimento(150.0);
 
-        conta1.titular = "Augusto";
-        conta1.saldo = 1000.00;
+        c1.exibirSaldo();
 
-         ContaBancária conta2 = new ContaBancária();
-
-        conta2.titular = "Carlos";
-        conta2.saldo = 9000.00;
-
-        conta1.sacar(500);
-        conta1.exibirSaldo();
-
-        conta2.DepositarValor(4000);
-        conta2.exibirSaldo();
-
-        conta1.transferir(conta2, 200);
-        conta1.exibirSaldo();
-        conta2.exibirSaldo();
+        System.out.println(c1.titular.nome);
     }
-
 }

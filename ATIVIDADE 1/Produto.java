@@ -5,7 +5,7 @@ public class Produto {
     int estoque;
 
     void exibirInfo() {
-        System.out.println("Nome - " + nome);
+        System.out.println("\nNome - " + nome);
         System.out.println("Preço - " + preco);
         System.out.println("Quantidade - " + estoque);
     }
@@ -13,11 +13,9 @@ public class Produto {
     void vender(int quantidade) {
         if (quantidade <= estoque) {
             estoque -= quantidade;
-            System.out.println("Venda realizada com sucesso!");
+            System.out.println("\nVenda realizada com sucesso!");
         } else {
             System.out.println("Estoque insuficiente para a venda.");
         }
-
-
     }
 }

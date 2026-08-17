@@ -1,22 +1,35 @@
 public class ContaBancária {
-    String titular;
+    Titular titular;
     double saldo;
+    int operacao;
 
+    ContaBancária(Titular titular, double saldoInicial) {
+        this.titular = titular;
+        this.saldo = saldoInicial;
+    }
+
+
+
+    
     void DepositarValor(double valor) {
-        saldo += valor;
+        if (valor <= 0) {
+            System.out.println("\nValor Inválido");
+        } else {
+            saldo += valor;
+        }
     }
 
     void sacar(double valor){
-        if(valor <= saldo){
-            saldo -= valor;
-            System.out.println("Saque realizado com sucesso!");
+        if(valor + 0.50 <= saldo){
+            saldo -= (valor + 0.50);
+            System.out.println("\nSaque realizado com sucesso!");
         }
         else{
-            System.out.println("Saldo insuficiente para o saque.");
+            System.out.println("\nSaldo insuficiente para o saque.");
         }
     }
     void exibirSaldo(){
-        System.out.println("Saldo atual: " + saldo);
+        System.out.println("\nSaldo atual: " + saldo);
         System.out.println("Titular: " + titular);
     }
 
@@ -26,7 +39,17 @@ public class ContaBancária {
                 destinatario.DepositarValor(valor);
         }
         else{
-            System.out.println("Saldo insuficiente");
+            System.out.println("\nSaldo insuficiente");
+        }
+    }
+
+    void aplicarRendimento(double percentual){
+        if (percentual <= 0 || percentual > 100){
+            System.out.println("\nPercentual inválido");
+        }
+        else{
+            saldo += saldo * percentual / 100;
+            System.out.println("\nRendimento aplicado com sucesso!");
         }
     }
 }
