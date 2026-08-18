@@ -4,6 +4,11 @@ public class Produto {
     double preco;
     int estoque;
 
+    Produto (String nome, double preco){
+        this.nome = nome;
+        this.preco = preco;
+    }
+
     void exibirInfo() {
         System.out.println("\nNome - " + nome);
         System.out.println("Preço - " + preco);

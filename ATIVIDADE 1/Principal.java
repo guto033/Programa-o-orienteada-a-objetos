@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Principal {
 
     public static void main(String[] args) {
@@ -49,5 +51,24 @@ public class Principal {
         c1.exibirSaldo();
 
         System.out.println(c1.titular.nome);
+
+        Cliente cliente1 = new Cliente("Augusto", "augusto@email.com");
+        Produto produto1 = new Produto("Notebook", 3500);
+
+        Pedido pedido1 = new Pedido(cliente1, produto1, 2);
+
+        Cliente cliente2 = new Cliente("João", "joao@email.com");
+        Produto produto2 = new Produto("Mouse", 100);
+
+        Pedido pedido2 = new Pedido(cliente2, produto2, 3);
+    
+        pedido1.resumo();
+        pedido2.resumo();
+
+
+        Consulta consulta = new Consulta("Augusto",LocalDate.of(2026, 8, 20), 200);
+        Consulta consulta2 = new Consulta("João",LocalDate.of(2026, 8, 25),250);
+        consulta.exibirComprovante();
+        consulta2.exibirComprovante();
     }
 }
