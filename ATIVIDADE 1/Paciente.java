@@ -1,6 +1,6 @@
 public class Paciente{
-    String nome;
-    String telefone;
+    private String nome;
+    private String telefone;
 
     Paciente (String nome, String telefone){
         this.nome = nome;

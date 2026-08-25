@@ -1,9 +1,17 @@
 public class Filme {
+    
 
-    String titulo;
-    int duracao;
-    double nota;
-    boolean assistido;
+    private String titulo;
+    private int duracao;
+    private double nota;
+    private boolean assistido;
+
+    Filme(String titulo, int duracao, double nota, boolean assistido) {
+        this.titulo = titulo;
+        this.duracao = duracao;
+        this.nota = nota;
+        this.assistido = assistido;
+    }
 
     void exibirFicha() {
         System.out.println("\nTítulo: " + titulo);

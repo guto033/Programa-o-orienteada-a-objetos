@@ -1,11 +1,11 @@
 import java.time.LocalDate;
 
 public class Consulta{
-    String Paciente;
+    String paciente;
     double valor;
     LocalDate data;
 
-    Consulta (Sring Paciente, LocalDate data, double valor){
+    Consulta (String paciente, LocalDate data, double valor){
         this.paciente = paciente;
         this.data = data;
         this.valor = valor; 

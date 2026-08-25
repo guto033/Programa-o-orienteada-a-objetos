@@ -1,56 +1,83 @@
+import java.util.ArrayList;
 public class ContaBancária {
-    Titular titular;
-    double saldo;
-    int operacao;
 
-    ContaBancária(Titular titular, double saldoInicial) {
-        this.titular = titular;
-        this.saldo = saldoInicial;
+    private Titular titular;
+    private int numero;
+    private double saldo;
+    private ArrayList<Double> movimentacoes = new ArrayList<>();
+
+    ContaBancária(int numero, Titular titular) {
+    this.numero = numero;
+    this.titular = titular;
+    this.saldo = 0;
     }
-
-
-
     
-    void DepositarValor(double valor) {
+    int getNumero() {
+    return numero;
+    }
+
+    void exibirExtrato() {
+        for(Double mov : movimentacoes) {
+            System.out.println("\nMovimentacao: " + mov);
+        }
+    }
+
+    void mostrarTotalDepositado() {
+        Double valorTotal = 0.00;
+        for(Double mov : movimentacoes) {
+            if (mov > 0) {
+                valorTotal += mov;
+            }
+        }
+
+        System.out.println("Total Depositado: " + valorTotal);
+    }
+
+    void mostrarMaiorSaque() {
+        Double maiorSaque = movimentacoes.get(0);
+
+        for(Double mov : movimentacoes) {
+            if(mov < maiorSaque) {
+                maiorSaque = mov;
+            }
+        }
+
+        System.out.println("Maior Saque: " + maiorSaque);
+    }
+     
+    void depositar(double valor) {
         if (valor <= 0) {
-            System.out.println("\nValor Inválido");
+            System.out.println("Depósito inválido na conta de " + titular.getNome() + ": R$ " + valor);
         } else {
-            saldo += valor;
+            saldo = saldo + valor;
+            movimentacoes.add(valor);
+            System.out.println("Depósito de R$ " + valor + " na conta de " + titular.getNome());
         }
     }
 
-    void sacar(double valor){
-        if(valor + 0.50 <= saldo){
-            saldo -= (valor + 0.50);
-            System.out.println("\nSaque realizado com sucesso!");
-        }
-        else{
-            System.out.println("\nSaldo insuficiente para o saque.");
-        }
-    }
-    void exibirSaldo(){
-        System.out.println("\nSaldo atual: " + saldo);
-        System.out.println("Titular: " + titular);
-    }
-
-    void transferir(ContaBancária destinatario, double valor){
-        if (valor <= saldo){
-                saldo -= valor;
-                destinatario.DepositarValor(valor);
-        }
-        else{
-            System.out.println("\nSaldo insuficiente");
+    void sacar(double valor) {
+        double custo = valor + 0.50;
+        if (custo > saldo) {
+            System.out.println("Saldo insuficiente na conta de " + titular.getNome()
+                    + ": saque R$ " + valor + " mais tarifa, saldo R$ " + saldo);
+        } else {
+            saldo = saldo - custo;
+            movimentacoes.add(valor * -1);
+            System.out.println("Saque de R$ " + valor + " (tarifa R$ 0.5) na conta de " + titular.getNome());
         }
     }
 
-    void aplicarRendimento(double percentual){
-        if (percentual <= 0 || percentual > 100){
-            System.out.println("\nPercentual inválido");
+    void aplicarRendimento(double percentual) {
+        if (percentual < 0 || percentual > 100) {
+            System.out.println("Percentual inválido: " + percentual);
+        } else {
+            saldo = saldo + saldo * percentual / 100;
+            System.out.println("Rendimento de " + percentual + "% na conta de " + titular.getNome());
         }
-        else{
-            saldo += saldo * percentual / 100;
-            System.out.println("\nRendimento aplicado com sucesso!");
-        }
+    }
+
+    void exibirSaldo() {
+        System.out.println("Conta de " + titular.getNome() + ": R$ " + saldo 
+        + " em " + movimentacoes.size() + "transações");
     }
 }
-
