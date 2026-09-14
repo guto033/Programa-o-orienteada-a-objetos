@@ -1,9 +1,8 @@
 import java.time.LocalDate;
 
 public class Principal {
-
     public static void main(String[] args) {
-
+        
         Banco banco = new Banco();
 
         Titular titular1 = new Titular("Augusto", "12345", null);
