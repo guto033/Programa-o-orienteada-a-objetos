@@ -1,4 +1,5 @@
 package Conta_Bancária;
+
 import java.util.Scanner;
 
 public class Principal {
@@ -11,6 +12,7 @@ public class Principal {
         int opcao;
 
         do {
+
             System.out.println();
             System.out.println("=== BANCO ===");
             System.out.println("1 - Criar conta");
@@ -30,6 +32,13 @@ public class Principal {
             switch (opcao) {
 
                 case 1:
+
+                    System.out.println("1 - Conta Corrente");
+                    System.out.println("2 - Conta Poupança");
+                    System.out.print("Tipo da conta: ");
+                    int tipo = scanner.nextInt();
+                    scanner.nextLine();
+
                     System.out.print("Nome: ");
                     String nome = scanner.nextLine();
 
@@ -39,10 +48,12 @@ public class Principal {
                     System.out.print("Data de nascimento: ");
                     String dataNascimento = scanner.nextLine();
 
-                    banco.abrirConta(nome, cpf, dataNascimento);
+                    banco.abrirConta(tipo, nome, cpf, dataNascimento);
+
                     break;
 
                 case 2:
+
                     System.out.print("Número da conta: ");
                     int contaSaque = scanner.nextInt();
 
@@ -50,9 +61,11 @@ public class Principal {
                     double valorSaque = scanner.nextDouble();
 
                     banco.sacar(contaSaque, valorSaque);
+
                     break;
 
                 case 3:
+
                     System.out.print("Número da conta: ");
                     int contaDeposito = scanner.nextInt();
 
@@ -60,51 +73,60 @@ public class Principal {
                     double valorDeposito = scanner.nextDouble();
 
                     banco.depositar(contaDeposito, valorDeposito);
+
                     break;
 
                 case 4:
-                    System.out.print("Conta de origem: ");
+
+                    System.out.print("Conta origem: ");
                     int origem = scanner.nextInt();
 
-                    System.out.print("Conta de destino: ");
+                    System.out.print("Conta destino: ");
                     int destino = scanner.nextInt();
 
                     System.out.print("Valor: ");
-                    double valorTransferencia = scanner.nextDouble();
+                    double valor = scanner.nextDouble();
 
-                    banco.transferir(origem, destino, valorTransferencia);
+                    banco.transferir(origem, destino, valor);
+
                     break;
 
                 case 5:
-                    System.out.print("Número da conta: ");
-                    int contaSaldo = scanner.nextInt();
 
-                    banco.consultarSaldo(contaSaldo);
+                    System.out.print("Número da conta: ");
+                    banco.consultarSaldo(scanner.nextInt());
+
                     break;
 
                 case 6:
-                    System.out.print("Número da conta: ");
-                    int contaExtrato = scanner.nextInt();
 
-                    banco.exibirExtrato(contaExtrato);
+                    System.out.print("Número da conta: ");
+                    banco.exibirExtrato(scanner.nextInt());
+
                     break;
 
                 case 7:
+
                     System.out.print("Número da conta: ");
-                    int contaRendimento = scanner.nextInt();
+                    int conta = scanner.nextInt();
 
                     System.out.print("Percentual: ");
                     double percentual = scanner.nextDouble();
 
-                    banco.aplicarRendimento(contaRendimento, percentual);
+                    banco.aplicarRendimento(conta, percentual);
+
                     break;
 
                 case 8:
+
                     banco.listarContas();
+
                     break;
 
                 case 0:
+
                     System.out.println("Programa encerrado.");
+
                     break;
 
                 default:

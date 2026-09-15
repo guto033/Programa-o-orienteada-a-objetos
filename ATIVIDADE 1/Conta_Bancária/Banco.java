@@ -1,4 +1,5 @@
 package Conta_Bancária;
+
 import java.util.ArrayList;
 
 public class Banco {
@@ -7,19 +8,20 @@ public class Banco {
     private int proximoNumero;
 
     public Banco() {
+
         contas = new ArrayList<>();
         proximoNumero = 1;
     }
 
-    public ContaBancaria abrirConta(String titular, String cpf, String dataNascimento) {
+    public ContaBancaria abrirConta(int tipo, String titular, String cpf, String dataNascimento) {
 
-        ContaBancaria conta = new ContaBancaria(
-                proximoNumero,
-                titular,
-                cpf,
-                dataNascimento,
-                0
-        );
+        ContaBancaria conta;
+
+        if (tipo == 1) {
+            conta = new ContaCorrente(proximoNumero, titular, cpf, dataNascimento, 0);
+        } else {
+            conta = new ContaPoupanca(proximoNumero, titular, cpf, dataNascimento, 0);
+        }
 
         contas.add(conta);
         proximoNumero++;
@@ -70,7 +72,7 @@ public class Banco {
         if (conta == null) {
             System.out.println("Conta não encontrada.");
         } else {
-            System.out.println("Saldo: " + conta.getSaldo());
+            System.out.println("Saldo: R$" + conta.getSaldo());
         }
     }
 
@@ -91,8 +93,10 @@ public class Banco {
 
         if (conta == null) {
             System.out.println("Conta não encontrada.");
+        } else if (conta instanceof ContaPoupanca) {
+            ((ContaPoupanca) conta).aplicarRendimento(percentual);
         } else {
-            conta.aplicarRendimento(percentual);
+            System.out.println("Conta corrente não possui rendimento.");
         }
     }
 
@@ -104,11 +108,20 @@ public class Banco {
         }
 
         for (ContaBancaria conta : contas) {
+
+            String tipo;
+
+            if (conta instanceof ContaCorrente) {
+                tipo = "Corrente";
+            } else {
+                tipo = "Poupança";
+            }
+
             System.out.println(
                     "Conta: " + conta.getNumero()
                             + " | Titular: " + conta.getTitular()
-                            + " | Saldo: " + conta.getSaldo()
-            );
+                            + " | Tipo: " + tipo
+                            + " | Saldo: R$" + conta.getSaldo());
         }
     }
 
@@ -132,12 +145,14 @@ public class Banco {
             return;
         }
 
-        if (valor > contaOrigem.getSaldo()) {
+        if (contaOrigem.getSaldo() < valor) {
             System.out.println("Saldo insuficiente.");
             return;
         }
 
         contaOrigem.sacar(valor);
         contaDestino.depositar(valor);
+
+        System.out.println("Transferência realizada.");
     }
 }
