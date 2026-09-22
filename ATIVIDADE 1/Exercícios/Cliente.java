@@ -1,3 +1,4 @@
+package Exercícios;
 public class Cliente {
     String nome;
     String email;

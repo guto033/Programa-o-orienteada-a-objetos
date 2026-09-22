@@ -1,3 +1,4 @@
+package Exercícios;
 public class Pedido {
     Cliente cliente;
     Produto produto;

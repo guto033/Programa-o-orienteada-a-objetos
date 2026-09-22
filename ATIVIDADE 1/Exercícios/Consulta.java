@@ -1,3 +1,4 @@
+package Exercícios;
 import java.time.LocalDate;
 
 public class Consulta{
