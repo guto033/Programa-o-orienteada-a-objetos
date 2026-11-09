@@ -1,5 +1,5 @@
 public class Comediante extends Participante {
-    private final String tema;
+    private String tema;
 
     public Comediante(String nome, String turma, String tema, int duracaoMinutos) {
         super(nome, turma, duracaoMinutos);
