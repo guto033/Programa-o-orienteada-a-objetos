@@ -1,5 +1,3 @@
-package frota;
-
 public class Caminhao extends Veiculo {
     private static final double ADICIONAL_POR_KM_POR_TONELADA = 0.50;
 
