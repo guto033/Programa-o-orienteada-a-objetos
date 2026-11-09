@@ -1,5 +1,3 @@
-package frota;
-
 public class Moto extends Veiculo {
 
     public Moto(String placa, double capacidadeKg) {
