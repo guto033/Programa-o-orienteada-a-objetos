@@ -1,6 +1,6 @@
 ;
 public class Dancarino extends Participante {
-    private final String estilo;
+    private String estilo;
 
     public Dancarino(String nome, String turma, String estilo, int duracaoMinutos) {
         super(nome, turma, duracaoMinutos);
