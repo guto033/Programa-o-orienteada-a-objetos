@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Programacao {
-    private final List<Apresentavel> apresentacoes = new ArrayList<>();
+    private List<Apresentavel> apresentacoes = new ArrayList<>();
 
     public void registrar(Apresentavel apresentacao) {
         apresentacoes.add(apresentacao);
