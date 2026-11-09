@@ -1,5 +1,5 @@
 public class Cantor extends Participante {
-    private final String musica;
+    private String musica;
 
     public Cantor(String nome, String turma, String musica, int duracaoMinutos) {
         super(nome, turma, duracaoMinutos);
