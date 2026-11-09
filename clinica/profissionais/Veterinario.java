@@ -1,4 +1,3 @@
-package clinica.profissionais;
 
 import clinica.capacidades.AplicaVacina;
 import clinica.capacidades.FazConsulta;

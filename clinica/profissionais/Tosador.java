@@ -1,4 +1,3 @@
-package clinica.profissionais;
 
 import clinica.capacidades.DaBanho;
 import clinica.capacidades.FazTosa;

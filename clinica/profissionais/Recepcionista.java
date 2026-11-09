@@ -1,4 +1,3 @@
-package clinica.profissionais;
 
 import clinica.capacidades.AgendaConsulta;
 import clinica.capacidades.EmiteRecibo;

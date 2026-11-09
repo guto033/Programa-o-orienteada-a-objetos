@@ -1,4 +1,3 @@
-package clinica;
 
 import clinica.capacidades.DaBanho;
 import clinica.profissionais.Estagiario;
@@ -25,8 +24,7 @@ public class Main {
 
         estagiario.agendarConsulta("Nina", "16h30");
         estagiario.darBanho("Nina");
-
-        // Quem precisa de banho pede só o contrato DaBanho: aceita tosador e estagiário.
+        
         System.out.println();
         DaBanho[] quemDaBanho = { tosador, estagiario };
         for (DaBanho b : quemDaBanho) {

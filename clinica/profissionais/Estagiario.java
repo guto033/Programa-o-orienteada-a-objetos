@@ -1,9 +1,7 @@
-package clinica.profissionais;
 
 import clinica.capacidades.AgendaConsulta;
 import clinica.capacidades.DaBanho;
 
-// Só agenda e dá banho: 2 contratos, e nenhuma classe existente foi editada.
 public class Estagiario extends Funcionario implements AgendaConsulta, DaBanho {
     public Estagiario(String nome) {
         super(nome);
